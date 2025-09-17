@@ -33,7 +33,7 @@ export default function OTPVerify() {
       <h2 className="text-xl font-semibold mb-4">OTP Verification</h2>
       <p className="text-sm text-gray-600 mb-3">Enter the OTP sent to your email for registration (registration id: {regId})</p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
-        <input {...register("otp")} placeholder="6-digit OTP" className="w-full px-3 py-2 border rounded" />
+        <input type="text" inputMode="numeric" pattern="[0-9]*" maxLength={6} {...register("otp",{required: "OTP is required", pattern: {value: /^[0-9]{6}$/, message: "Enter a valid 6-digit OTP"}})} placeholder="6-digit OTP" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} className="w-full px-3 py-2 border rounded" />
         <button className="w-full px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-800 transition cursor-pointer">Verify OTP</button>
         <button type="button" onClick={resendOtp} className="w-full px-4 py-2 bg-gray-500 text-white rounded mt-2 hover:bg-gray-600 transition cursor-pointer">Resend OTP</button>
       </form>

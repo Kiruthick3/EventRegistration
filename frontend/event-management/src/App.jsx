@@ -9,6 +9,7 @@ import Events from "./pages/Events";
 import EventDetail from "./pages/EventDetail";
 import OTPVerify from "./pages/OTPVerify";
 import Tickets from "./pages/Tickets";
+import MyProfile from "./pages/MyProfile";
 
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminUsers from "./pages/admin/AdminUsers";
@@ -29,7 +30,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/tickets" element={<PrivateRoute><Tickets /></PrivateRoute>} />
-
+        <Route path="/my-profile" element={<MyProfile />} />
+        
         <Route path="/admin" element={<PrivateRoute roles={["ADMIN"]}><AdminDashboard /></PrivateRoute>} />
         <Route path="/admin/users" element={<PrivateRoute roles={["ADMIN"]}><AdminUsers /></PrivateRoute>} />
         <Route path="/admin/groups" element={<PrivateRoute roles={["ADMIN"]}><AdminGroups /></PrivateRoute>} />

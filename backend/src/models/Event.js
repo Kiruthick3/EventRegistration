@@ -8,7 +8,9 @@ const EventSchema = new mongoose.Schema({
   endsAt: { type: Date, required: true },
   capacity: { type: Number, default: 100 },
   isActive: { type: Boolean, default: true },
-  description: { type: String, default: "" }
+  description: { type: String, default: "" },
+  isFree: { type: Boolean, default: true },
+  cost: { type: Number, default: 0 }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Event", EventSchema);

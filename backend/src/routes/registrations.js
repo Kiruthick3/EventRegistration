@@ -223,4 +223,19 @@ router.get("/:id/idcard", auth(["USER", "ADMIN"]), async (req, res) => {
   }
 });
 
+// GET /api/registrations/count/:eventId -> total confirmed registrations
+router.get("/count/:eventId", async (req, res) => {
+  try {
+    const { eventId } = req.params;
+    const count = await Registration.countDocuments({
+      eventId,
+      status: "CONFIRMED"
+    });
+    res.json({ count });
+  } catch (err) {
+    console.error("count err:", err);
+    res.status(500).json({ message: "Server error in count", error: err.message });
+  }
+});
+
 module.exports = router;

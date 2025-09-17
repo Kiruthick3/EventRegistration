@@ -79,7 +79,7 @@ export default function AdminRegistrations() {
   return (
     <div className="max-w-6xl mx-auto py-8">
       <h1 className="text-2xl font-semibold mb-4">Registrations</h1>
-      <div className="flex gap-2 mb-4">
+      <div className="p-1 flex gap-2 mb-4">
         <select value={eventId} onChange={e=>setEventId(e.target.value)} className="border px-3 py-2 rounded cursor-pointer">
           <option value="">Select event</option>
           {events.map(ev=> <option key={ev._id} value={ev._id}>{ev.name}</option>)}
@@ -88,7 +88,7 @@ export default function AdminRegistrations() {
         <button onClick={downloadCsv} className="px-3 py-2 border rounded hover:bg-indigo-800 hover:text-white transition cursor-pointer">Export CSV</button>
       </div>
 
-        <div className="flex gap-2 mb-4">
+        <div className="p-1 flex gap-2 mb-4">
         <input
             placeholder="User email to add"
             value={userEmail}
@@ -100,7 +100,7 @@ export default function AdminRegistrations() {
 
       <div className="space-y-2">
         {regs.map(r => (
-          <div key={r._id} className="bg-white p-3 rounded shadow flex justify-between">
+          <div key={r._id} className="bg-white p-3 rounded shadow flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
               <div className="font-semibold">{r.userId?.name} ({r.ticketId})</div>
               <div className="text-sm text-gray-600">{r.userId?.email} | {r.userId?.bloodGroup}</div>
